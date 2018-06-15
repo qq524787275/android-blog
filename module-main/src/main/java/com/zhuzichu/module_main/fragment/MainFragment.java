@@ -13,6 +13,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.view.View;
 
+import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.Response;
 import com.orhanobut.logger.Logger;
@@ -72,7 +73,7 @@ public class MainFragment extends BaseBackFragment {
 
             TastyToast.makeText(_mActivity.getApplicationContext(),info,TastyToast.LENGTH_SHORT,TastyToast.INFO);
             OkGo.<String>post(Constants.URL_SENDALL)
-                    .params("msg",info)
+                    .params("msg",new Gson().toJson(LocationUtils.GPS84ToGCJ02(location.getLongitude(),location.getLatitude())))
                     .execute(new JsonCallback<String>() {
                         @Override
                         public void onSuccess(Response<String> response) {
@@ -162,7 +163,7 @@ public class MainFragment extends BaseBackFragment {
             TastyToast.makeText(_mActivity.getApplicationContext(),"兄台，定位未开权限",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
             return;
         }
-        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 2000, 0,locationListener);
+        locationManager.requestLocationUpdates(locationManager.getBestProvider(LocationUtils.getCriteria(), true), 2000, 0,locationListener);
 
         locationManager.addGpsStatusListener(new GpsStatus.Listener() {
             @Override

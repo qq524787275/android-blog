@@ -7,7 +7,7 @@ package com.zhuzichu.module_base;
 public class Constants {
 
     //域名host http://www.minjianle.com http://www.winthis.cn
-    public static final String BASE_URL="http://192.168.2.210:8012";
+    public static final String BASE_URL="http://zhuzichu.com";
 
     public static final String URL_SENDALL=BASE_URL+"/api/websocket/sendAll";
 

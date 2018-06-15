@@ -42,4 +42,10 @@ dependencies {
     if (!isDebugSplashModule.toBoolean()) {
         implementation project(':module-splash')
     }
+    if (!isDebugHomeModule.toBoolean()) {
+        implementation project(':module-home')
+    }
+    if (!isDebugPersonModule.toBoolean()) {
+        implementation project(':module-person')
+    }
 }

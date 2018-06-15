@@ -123,7 +123,7 @@ public class LocationUtils {
      *
      * @return {@link Criteria}
      */
-    private static Criteria getCriteria() {
+    public static Criteria getCriteria() {
         Criteria criteria = new Criteria();
         //设置定位精确度 Criteria.ACCURACY_COARSE比较粗略，Criteria.ACCURACY_FINE则比较精细
         criteria.setAccuracy(Criteria.ACCURACY_FINE);
