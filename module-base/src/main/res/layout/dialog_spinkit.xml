@@ -28,7 +28,7 @@
             android:layout_centerHorizontal="true"
             android:textSize="30px"
             android:layout_marginTop="15px"
-            android:textColor="@color/qmui_config_color_blue"
+            android:textColor="?attr/colorPrimary"
             android:text="加载中..."/>
     </RelativeLayout>
 </LinearLayout>

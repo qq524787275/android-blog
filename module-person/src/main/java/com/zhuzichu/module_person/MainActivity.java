@@ -1,13 +1,21 @@
 package com.zhuzichu.module_person;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import com.orhanobut.logger.Logger;
+import com.zhuzichu.module_base.base.BaseActivity;
+import com.zhuzichu.module_base.base.BaseFragment;
+import com.zhuzichu.module_person.fragment.PersonFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public BaseFragment setRootFragment() {
+        return PersonFragment.newInstance();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Logger.i("Activity销毁了");
+    }
+
 }

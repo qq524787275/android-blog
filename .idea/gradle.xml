@@ -9,10 +9,13 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/library-yasea" />
             <option value="$PROJECT_DIR$/module-base" />
             <option value="$PROJECT_DIR$/module-home" />
+            <option value="$PROJECT_DIR$/module-live" />
             <option value="$PROJECT_DIR$/module-main" />
             <option value="$PROJECT_DIR$/module-person" />
+            <option value="$PROJECT_DIR$/module-service" />
             <option value="$PROJECT_DIR$/module-splash" />
           </set>
         </option>

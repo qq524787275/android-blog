@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">module-person</string>
+    <string name="primary_color" >主题颜色</string>
 </resources>

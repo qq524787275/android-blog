@@ -53,4 +53,22 @@ dependencies {
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompiler"
     implementation project(':module-base')
+
+
+
+    if (!isDebugSplashModule.toBoolean()) {
+        implementation project(':module-splash')
+    }
+    if (!isDebugHomeModule.toBoolean()) {
+        implementation project(':module-home')
+    }
+    if (!isDebugPersonModule.toBoolean()) {
+        implementation project(':module-person')
+    }
+    if (!isDebugLiveModule.toBoolean()) {
+        implementation project(':module-live')
+    }
+    if (!isDebugServiceModule.toBoolean()) {
+        implementation project(':module-service')
+    }
 }

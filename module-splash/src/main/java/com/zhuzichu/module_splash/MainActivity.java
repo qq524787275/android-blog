@@ -5,7 +5,9 @@ import android.view.KeyEvent;
 import com.zhuzichu.module_base.base.BaseActivity;
 import com.zhuzichu.module_base.base.BaseFragment;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity{
+
+
 
     @Override
     public BaseFragment setRootFragment() {
@@ -20,6 +22,5 @@ public class MainActivity extends BaseActivity {
         }else {
             return super.onKeyDown(keyCode, event);
         }
-
     }
 }

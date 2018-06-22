@@ -4,11 +4,11 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ContentFrameLayout;
 import android.view.MotionEvent;
 
 import com.zhuzichu.module_base.R;
-import com.zhuzichu.module_base.widget.autolayout.AutoLayoutActivity;
 
 import me.yokeyword.fragmentation.ExtraTransaction;
 import me.yokeyword.fragmentation.ISupportActivity;
@@ -21,9 +21,10 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
  * Created by Zzc on 2017/11/17/017.
  */
 
-public abstract class BaseActivity extends AutoLayoutActivity implements ISupportActivity {
+public abstract class BaseActivity extends AppCompatActivity implements ISupportActivity {
     final SupportActivityDelegate mDelegate = new SupportActivityDelegate(this);
     public abstract BaseFragment setRootFragment();
+
 
     @Override
     public SupportActivityDelegate getSupportDelegate() {

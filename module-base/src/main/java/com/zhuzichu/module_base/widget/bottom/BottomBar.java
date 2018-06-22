@@ -1,7 +1,6 @@
 package com.zhuzichu.module_base.widget.bottom;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.support.v4.view.ViewCompat;
@@ -55,7 +54,7 @@ public class BottomBar extends LinearLayout {
 //        addView(shadowView, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
 
         mTabLayout = new LinearLayout(context);
-        mTabLayout.setBackgroundColor(Color.WHITE);
+        mTabLayout.setBackground(this.getBackground());
         mTabLayout.setOrientation(LinearLayout.HORIZONTAL);
         addView(mTabLayout, new LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
 

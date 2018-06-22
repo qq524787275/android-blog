@@ -4,7 +4,7 @@ if (isDebugPersonModule.toBoolean()) {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'com.jakewharton.butterknife'
-
+apply plugin: 'me.tatarka.retrolambda'
 android {
     compileSdkVersion 27
 
@@ -42,6 +42,11 @@ android {
         checkReleaseBuilds false
         abortOnError false
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+        encoding "UTF-8"
+    }
 }
 
 dependencies {
@@ -53,5 +58,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     annotationProcessor "com.jakewharton:butterknife-compiler:$rootProject.butterKnifeVersion"
     annotationProcessor "com.alibaba:arouter-compiler:$rootProject.arouterCompiler"
+
     implementation project(':module-base')
+    implementation project(':module-service')
 }

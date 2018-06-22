@@ -8,6 +8,9 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentationHack;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,6 +69,15 @@ public abstract class BaseFragment extends Fragment implements ISupportFragment{
         initView(view);
         initEvent();
         initData();
+    }
+
+    public void setSupportActionBar(Toolbar toolbar){
+        ((AppCompatActivity)_mActivity).setSupportActionBar(toolbar);
+        setHasOptionsMenu(true);
+    }
+
+    public ActionBar getSupportActionBar(){
+        return ((AppCompatActivity)_mActivity).getSupportActionBar();
     }
 
     @Override

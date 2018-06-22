@@ -9,4 +9,7 @@
     <dimen name="radius_sidebar" >20dp</dimen>
     <dimen name="ball_radius_sidebar" >24dp</dimen>
 
+
+    <dimen name="cardview_margin">24dp</dimen>
+    <dimen name="info_text_size">16sp</dimen>
 </resources>

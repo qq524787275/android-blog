@@ -104,6 +104,10 @@ public class LocationUtils {
         return true;
     }
 
+    public static boolean isUse(){
+        return myLocationListener!=null;
+    }
+
     /**
      * 注销
      */

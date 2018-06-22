@@ -16,6 +16,7 @@ import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.zhuzichu.module_base.App;
 import com.zhuzichu.module_base.Constants;
+import com.zhuzichu.module_base.RouterConstants;
 import com.zhuzichu.module_base.base.BaseFragment;
 import com.zhuzichu.module_base.widget.OnClickListener;
 
@@ -35,6 +36,7 @@ public class SplashFragment extends BaseFragment {
     TextView mTvJump;
 
     private boolean isJump=false;
+    private boolean isIn;
 
     public static SplashFragment newInstance() {
 
@@ -52,6 +54,7 @@ public class SplashFragment extends BaseFragment {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
+
     }
 
     @Override
@@ -105,8 +108,9 @@ public class SplashFragment extends BaseFragment {
     }
 
     private void startToMainActivity() {
+
         ActivityOptionsCompat optionsCompat= ActivityOptionsCompat.makeCustomAnimation(_mActivity.getApplicationContext(),R.anim.screen_zoom_in,R.anim.screen_zoom_out);
-        ARouter.getInstance().build("/main/index")
+        ARouter.getInstance().build(RouterConstants.MAIN_MAIN)
                 .withOptionsCompat(optionsCompat)
                 .navigation();
         _mActivity.finish();

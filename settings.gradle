@@ -1,1 +1,1 @@
-include ':app', ':module-base', ':module-main', ':module-splash', ':module-person', ':module-home', ':module-home'
+include ':app', ':module-base', ':module-main', ':module-splash', ':module-person', ':module-home', ':module-service', ':module-live', ':library-yasea'

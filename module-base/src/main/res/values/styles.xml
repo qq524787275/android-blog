@@ -1,59 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="QMUI.Compat.NoActionBar">
-        <!-- 配置Android提供的theme -->
-        <item name="android:textAppearanceListItemSmall">@style/QDTextAppearanceListItemSmall</item>
-        <item name="android:textAppearanceListItem">@style/QDtextAppearanceListItem</item>
-        <item name="android:listPreferredItemHeight">?attr/qmui_list_item_height_higher</item>
-        <item name="android:listPreferredItemHeightSmall">?attr/qmui_list_item_height</item>
+    <attr name="cardStyle" format="reference" />
+    <attr format="reference" name="divider_color" />
+    <attr format="reference" name="bottom_bg_color" />
+    <attr format="reference" name="ttPopupMenuStyle" />
+
+
+    <style name="AppThemeLight" parent="ThemeBaseLight" />
+    <style name="AppThemeDark" parent="ThemeBaseDark" />
+
+
+    <style name="ThemeBaseLight" parent="Theme.AppCompat.Light.NoActionBar">
         <!--在无需多点触控的页面上，建议关闭多点触控-->
         <item name="android:splitMotionEvents">false</item>
         <item name="android:windowEnableSplitTouch">false</item>
 
+        <item name="cardStyle">@style/CardViewStyle.Light</item>
+        <item name="ate_key">light_theme</item>
 
-        <!-- 配置qmui提供的theme -->
-        <item name="qmui_config_color_blue">@color/black</item>
-        <item name="qmui_topbar_title_color">@color/qmui_config_color_white</item>
-        <item name="qmui_topbar_subtitle_color">@color/qmui_config_color_white</item>
-        <item name="qmui_topbar_text_btn_color_state_list">@color/qmui_config_color_blue</item>
-        <item name="qmui_topbar_height">48dp</item>
-        <item name="qmui_topbar_image_btn_height">48dp</item>
-        <item name="qmui_round_btn_bg_color">@color/qmui_config_color_blue</item>
-        <item name="qmui_round_btn_border_color">@color/qmui_config_color_blue</item>
-        <item name="qmui_round_btn_text_color">@color/qmui_config_color_blue</item>
-        <item name="qmui_content_spacing_horizontal">20dp</item>
-        <item name="qmui_content_padding_horizontal">@dimen/qmui_content_spacing_horizontal</item>
-        <item name="QMUITopBarStyle">@style/QDTopBar</item>
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryTextBlack</item>
 
-        <!-- 配置app自己的theme -->
-        <item name="app_primary_color">?attr/qmui_config_color_blue</item>
-        <item name="app_content_bg_color">@color/qmui_config_color_white</item>
+        <item name="colorPrimary">@color/colorPrimaryLightTheme</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkLightTheme</item>
+        <item name="colorAccent">@color/colorAccentLightTheme</item>
 
-    </style>
-    <style name="QDtextAppearanceListItem">
-        <item name="android:textColor">?attr/qmui_config_color_black</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:background">?attr/qmui_s_list_item_bg_with_border_bottom_inset_left
-        </item>
+        <item name="divider_color">@drawable/item_divider_black</item>
+        <item name="bottom_bg_color">@color/white</item>
+        <item name="ttPopupMenuStyle">@style/AppTheme.PopupOverlay</item>
     </style>
 
-    <style name="QDTextAppearanceListItemSmall">
-        <item name="android:textColor">?attr/qmui_config_color_gray_4</item>
-        <item name="android:textSize">16sp</item>
-        <item name="android:background">?attr/qmui_s_list_item_bg_with_border_bottom_inset_left
-        </item>
-    </style>
-    <style name="QDTopBar" parent="QMUI.TopBar">
-        <item name="qmui_topbar_bg_color">?attr/app_primary_color</item>
+    <style name="ThemeBaseDark" parent="Theme.AppCompat.NoActionBar">
+        <!--在无需多点触控的页面上，建议关闭多点触控-->
+        <item name="android:splitMotionEvents">false</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+
+        <item name="cardStyle">@style/CardViewStyle.Dark</item>
+        <item name="ate_key">dark_theme</item>
+
+        <item name="android:windowBackground">@color/window_background_dark</item>
+        <item name="android:textColorPrimary">@color/colorPrimaryTextWhite</item>
+
+        <item name="colorPrimary">@color/colorPrimaryDarkTheme</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkDarkTheme</item>
+        <item name="colorAccent">@color/colorAccentDarkTheme</item>
+
+        <item name="divider_color">@drawable/item_divider_white</item>
+        <item name="bottom_bg_color">@color/material_grey_600</item>
+        <item name="ttPopupMenuStyle">@style/AppTheme.PopupOverlay.Dark</item>
     </style>
 
+
+    <style name="AppTheme.PopupOverlay" parent="@style/ThemeOverlay.AppCompat.Light" />
+    <style name="AppTheme.PopupOverlay.Dark" parent="@style/ThemeOverlay.AppCompat.Dark" />
+
+
+    <style name="CardViewStyle.Light" parent="CardView">
+        <item name="cardBackgroundColor">@color/window_background</item>
+    </style>
+
+    <style name="CardViewStyle.Dark" parent="CardView">
+        <item name="cardBackgroundColor">@color/window_background_dark</item>
+    </style>
+
+
+    <style name="AppFullScreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@mipmap/img_splash_default</item>
+    </style>
+
+
+    <style name="MainTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@mipmap/img_transition_default</item>
+    </style>
 
     <style name="DefaultAnimation" parent="android:Animation">
         <item name="android:windowEnterAnimation">@anim/enter_anim</item>
         <item name="android:windowExitAnimation">@anim/exit_anim</item>
     </style>
+
     <style name="WindowAlphaAnimation">
         <item name="android:windowEnterAnimation">@anim/enter_alpha_anim</item>
         <item name="android:windowExitAnimation">@anim/exit_alpha_anim</item>
@@ -66,6 +97,7 @@
         <item name="android:windowSoftInputMode">adjustPan</item>
         <item name="android:windowIsFloating">true</item>
     </style>
+
     <style name="dialog" parent="@android:style/Theme.Dialog">
         <!--去掉边框 -->
         <item name="android:windowFrame">@null</item>
@@ -91,15 +123,11 @@
         <item name="android:maxHeight">48dip</item>
     </style>
 
-    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowFullscreen">true</item>
-        <item name="android:windowAnimationStyle">@style/default_animation_up</item>
-        <item name="android:windowBackground">@mipmap/img_transition_default</item>
-    </style>
 
     <!--打开图片详情时有动画-->
     <style name="default_animation_up" mce_bogus="1" parent="@android:style/Animation.Activity">
         <item name="android:activityOpenEnterAnimation">@anim/activity_up_in</item>
         <item name="android:activityOpenExitAnimation">@anim/activity_up_out</item>
     </style>
+
 </resources>

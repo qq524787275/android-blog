@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.zhuzichu.module_base.R;
+import com.zhuzichu.module_base.utils.ATEUtil;
 
 
 /**
@@ -98,11 +99,11 @@ public class BottomBarTab extends FrameLayout {
     public void setSelected(boolean selected) {
         super.setSelected(selected);
         if (selected) {
-            mIcon.setColorFilter(ContextCompat.getColor(mContext, R.color.red_ff5354));
-            mTvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.red_ff5354));
+            mIcon.setColorFilter(ATEUtil.getThemePrimaryColor(mContext));
+            mTvTitle.setTextColor(ATEUtil.getThemePrimaryColor(mContext));
         } else {
-            mIcon.setColorFilter(ContextCompat.getColor(mContext, R.color.black_222));
-            mTvTitle.setTextColor(ContextCompat.getColor(mContext, R.color.black_222));
+            mIcon.setColorFilter(Color.BLACK);
+            mTvTitle.setTextColor(Color.BLACK);
         }
     }
 
@@ -156,7 +157,7 @@ public class BottomBarTab extends FrameLayout {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, context.getResources().getDisplayMetrics());
     }
 
-    public void setIconColor(int color){
+    public void setIconColor(int color) {
         mIcon.setColorFilter(color);
     }
 }

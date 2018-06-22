@@ -22,10 +22,8 @@ import android.view.View;
 import android.view.animation.CycleInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.TranslateAnimation;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
 import java.io.File;
 
@@ -337,8 +335,4 @@ public class ViewUtils
         }
     }
 
-    public static void initStatusView(View statusView,int color){
-        statusView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, QMUIStatusBarHelper.getStatusbarHeight(statusView.getContext())));
-        statusView.setBackgroundColor(color);
-    }
 }

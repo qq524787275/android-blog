@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/color"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10px"
+        android:layout_marginLeft="25px"
+        android:layout_marginRight="25px"
+        android:layout_marginTop="25px"
+        android:text="色彩"
+        android:textColor="?colorPrimary"
+        android:textSize="26px" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="?attr/divider_color" />
+
+    <RelativeLayout
+        android:id="@+id/theme"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:paddingBottom="20px"
+        android:paddingLeft="25px"
+        android:paddingRight="25px"
+        android:paddingTop="20px">
+
+        <TextView
+            android:id="@+id/theme_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="主题色"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="28px" />
+
+        <TextView
+            android:id="@+id/theme_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/theme_title"
+            android:layout_marginTop="10px"
+            android:text="保护你的眼睛"
+            android:textSize="25px" />
+
+        <com.afollestad.appthemeengine.prefs.BorderCircleView
+            android:id="@+id/theme_circle"
+            android:layout_width="65px"
+            android:layout_height="65px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"></com.afollestad.appthemeengine.prefs.BorderCircleView>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="?attr/divider_color" />
+
+    <RelativeLayout
+        android:id="@+id/dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:paddingBottom="20px"
+        android:paddingLeft="25px"
+        android:paddingRight="25px"
+        android:paddingTop="20px">
+
+        <TextView
+            android:id="@+id/dark_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="夜间模式"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="28px" />
+
+        <TextView
+            android:id="@+id/dark_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dark_title"
+            android:layout_marginTop="10px"
+            android:text="应用夜间模式到整个应用"
+            android:textSize="25px" />
+
+        <CheckBox
+            android:id="@+id/dark_checkbox"
+            android:layout_width="70px"
+            android:layout_height="70px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"></CheckBox>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="?attr/divider_color" />
+
+    <TextView
+        android:id="@+id/other"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10px"
+        android:layout_marginLeft="25px"
+        android:layout_marginRight="25px"
+        android:layout_marginTop="25px"
+        android:text="其他"
+        android:textColor="?colorPrimary"
+        android:textSize="26px" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="?attr/divider_color" />
+
+    <RelativeLayout
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:paddingBottom="20px"
+        android:paddingLeft="25px"
+        android:paddingRight="25px"
+        android:paddingTop="20px">
+
+        <TextView
+            android:id="@+id/location_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开启定位"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="28px" />
+
+        <TextView
+            android:id="@+id/location_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/location_title"
+            android:layout_marginTop="10px"
+            android:text="定位查看zhuzichu.com"
+            android:textSize="25px" />
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/location_switch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:clickable="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"></android.support.v7.widget.SwitchCompat>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="?attr/divider_color" />
+
+
+    <RelativeLayout
+        android:id="@+id/live"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:paddingBottom="20px"
+        android:paddingLeft="25px"
+        android:paddingRight="25px"
+        android:paddingTop="20px">
+
+        <TextView
+            android:id="@+id/live_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="去直播"
+            android:textColor="?android:textColorPrimary"
+            android:textSize="28px" />
+
+        <TextView
+            android:id="@+id/live_subject"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/live_title"
+            android:layout_marginTop="10px"
+            android:text="直播查看zhuzichu.com"
+            android:textSize="25px" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="?attr/divider_color" />
+</LinearLayout>

@@ -10,11 +10,13 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [ moduleName : project.getName() ]
             }
         }
+
     }
     buildTypes {
         release {
@@ -39,13 +41,5 @@ dependencies {
     if(!isDebugMainModule.toBoolean()){
         implementation project(':module-main')
     }
-    if (!isDebugSplashModule.toBoolean()) {
-        implementation project(':module-splash')
-    }
-    if (!isDebugHomeModule.toBoolean()) {
-        implementation project(':module-home')
-    }
-    if (!isDebugPersonModule.toBoolean()) {
-        implementation project(':module-person')
-    }
+
 }

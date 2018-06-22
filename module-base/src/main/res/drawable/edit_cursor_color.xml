@@ -4,6 +4,5 @@
 
     <size android:width="2dp" />
 
-    <solid android:color="@color/qmui_config_color_red" />
-
+    <solid android:color="?attr/colorPrimary" />
 </shape>
