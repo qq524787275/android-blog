@@ -156,7 +156,6 @@ public class LiveFragment extends BaseFragment implements RtmpHandler.RtmpListen
         mMenu.getOverflowIcon().setColorFilter(ATEUtil.getThemeTextColorPrimary(_mActivity), PorterDuff.Mode.SRC_IN);
         mMenu.setOnMenuItemClickListener((item) -> onOptionsItemSelected(item));
     }
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
