@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.scwang.smartrefresh.layout.SmartRefreshLayout
+            android:id="@+id/refreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.zhuzichu.module_base.widget.recyclerview.FastScrollRecyclerView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:fastScrollAutoHide="true"
+                app:fastScrollAutoHideDelay="1500"
+                app:fastScrollPopupTextColor="@android:color/primary_text_dark"></com.zhuzichu.module_base.widget.recyclerview.FastScrollRecyclerView>
+
+            <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    </FrameLayout>
+</RelativeLayout>

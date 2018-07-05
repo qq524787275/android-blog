@@ -1,0 +1,16 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/cartoon_clean"
+        android:title="清理缓存"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/browser_see"
+        android:title="WebView查看"
+        app:showAsAction="never" />
+
+
+</menu>
