@@ -30,13 +30,13 @@ public class SimpleResponse implements Serializable {
 
     private static final long serialVersionUID = -1477609349345966116L;
 
-    public String status;
-    public String msg;
+    public int status_code;
+    public String message;
 
     public BaseResponse toBaseResponse() {
         BaseResponse baseResponse = new BaseResponse();
-        baseResponse.status = status;
-        baseResponse.msg = msg;
+        baseResponse.status_code = status_code;
+        baseResponse.message = message;
         return baseResponse;
     }
 }

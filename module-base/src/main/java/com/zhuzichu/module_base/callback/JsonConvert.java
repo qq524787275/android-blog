@@ -15,8 +15,6 @@
  */
 package com.zhuzichu.module_base.callback;
 
-import android.util.Log;
-
 import com.google.gson.stream.JsonReader;
 import com.lzy.okgo.convert.Converter;
 
@@ -66,7 +64,6 @@ public class JsonConvert<T> implements Converter<T> {
         // 如果你对这里的代码原理不清楚，可以看这里的详细原理说明: https://github.com/jeasonlzy/okhttp-OkGo/wiki/JsonCallback
         // 如果你对这里的代码原理不清楚，可以看这里的详细原理说明: https://github.com/jeasonlzy/okhttp-OkGo/wiki/JsonCallback
         // 如果你对这里的代码原理不清楚，可以看这里的详细原理说明: https://github.com/jeasonlzy/okhttp-OkGo/wiki/JsonCallback
-        Log.i("123456", "parseParameterizedType: ---------------");
 
         if (type == null) {
             if (clazz == null) {
@@ -136,38 +133,14 @@ public class JsonConvert<T> implements Converter<T> {
             return t;
         } else {
             SimpleResponse simpleResponse = Convert.fromJson(string, SimpleResponse.class);
-            String status = simpleResponse.status;
-            if (typeArgument == Void.class) {
-
-                if (status.equals("1")) {
-                    return (T) simpleResponse.toBaseResponse();
-                } else if (simpleResponse.msg.equals("token不能为空")) {
-//                    MainFragment.getMainFragment().startLogin();
-                    throw new IllegalStateException("token不能为空");
-                } else {
-//                    RxBus.getInstance().post(new OnToastErrorMsgEvent(simpleResponse.msg));
-                    throw new IllegalStateException("错误代码：" + status + "，错误信息：" + simpleResponse.msg);
-                }
-            } else {
-                if (status.equals("1")) {
-                    BaseResponse baseResponse = Convert.fromJson(string, type);
-                    //noinspection unchecked
-                    return (T) baseResponse;
-                } else if(simpleResponse.msg.equals("token不能为空")){
-//                    MainFragment.getMainFragment().startLogin();
-                    throw new IllegalStateException("token不能为空");
-                }
-                else if (status.equals("-1006")) {
-//                    UserSharedPreferences.getInstance(App.getmContext())
-//                            .saveUserInfo(null, null);
-//                    MainFragment.getMainFragment().startLogin();
-                    throw new IllegalStateException("token非法,请重新登录");
-                } else {
-                    //直接将服务端的错误信息抛出，onError中可以获取
-//                    RxBus.getInstance().post(new OnToastErrorMsgEvent(simpleResponse.msg));
-                    throw new IllegalStateException("错误代码：" + status + "，错误信息：" + simpleResponse.msg);
-                }
-            }
+            int status = simpleResponse.status_code;
+           if(status==200){
+               if (typeArgument == Void.class)
+               return (T) simpleResponse.toBaseResponse();
+               return (T)(Convert.fromJson(string, type));
+           }else{
+               throw new InstantiationException("请求失败:状态码"+status);
+           }
         }
     }
 }

@@ -22,16 +22,16 @@ public class BaseResponse<T> implements Serializable {
 
     private static final long serialVersionUID = 5213230387175987834L;
 
-    public String status;
-    public String msg;
-    public T result;
+    public int status_code;
+    public String message;
+    public T data;
 
     @Override
     public String toString() {
         return "BaseResponse{" +
-                "status=" + status +
-                ", msg='" + msg + '\'' +
-                ", result=" + result +
+                "status_code=" + status_code +
+                ", message='" + message + '\'' +
+                ", data=" + data +
                 '}';
     }
 }

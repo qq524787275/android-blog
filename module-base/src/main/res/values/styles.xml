@@ -5,22 +5,19 @@
     <attr format="reference" name="divider_color" />
     <attr format="reference" name="bottom_bg_color" />
     <attr format="reference" name="ttPopupMenuStyle" />
-
-
-    <style name="AppThemeLight" parent="ThemeBaseLight" />
-    <style name="AppThemeDark" parent="ThemeBaseDark" />
-
-
+    <!--白天模式-->
     <style name="ThemeBaseLight" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="ate_key">light_theme</item>
         <!--在无需多点触控的页面上，建议关闭多点触控-->
         <item name="android:splitMotionEvents">false</item>
         <item name="android:windowEnableSplitTouch">false</item>
 
         <item name="cardStyle">@style/CardViewStyle.Light</item>
-        <item name="ate_key">light_theme</item>
 
         <item name="android:windowBackground">@color/window_background</item>
         <item name="android:textColorPrimary">@color/colorPrimaryTextBlack</item>
+        <item name="android:textColorSecondary">@color/colorSubTextBlack</item>
+
 
         <item name="colorPrimary">@color/colorPrimaryLightTheme</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkLightTheme</item>
@@ -31,16 +28,18 @@
         <item name="ttPopupMenuStyle">@style/AppTheme.PopupOverlay</item>
     </style>
 
+    <!--夜间模式-->
     <style name="ThemeBaseDark" parent="Theme.AppCompat.NoActionBar">
+        <item name="ate_key">dark_theme</item>
         <!--在无需多点触控的页面上，建议关闭多点触控-->
         <item name="android:splitMotionEvents">false</item>
         <item name="android:windowEnableSplitTouch">false</item>
 
         <item name="cardStyle">@style/CardViewStyle.Dark</item>
-        <item name="ate_key">dark_theme</item>
 
         <item name="android:windowBackground">@color/window_background_dark</item>
         <item name="android:textColorPrimary">@color/colorPrimaryTextWhite</item>
+        <item name="android:textColorSecondary">@color/colorSubTextWhite</item>
 
         <item name="colorPrimary">@color/colorPrimaryDarkTheme</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDarkDarkTheme</item>
@@ -51,6 +50,8 @@
         <item name="ttPopupMenuStyle">@style/AppTheme.PopupOverlay.Dark</item>
     </style>
 
+    <style name="AppThemeLight" parent="ThemeBaseLight" />
+    <style name="AppThemeDark" parent="ThemeBaseDark" />
 
     <style name="AppTheme.PopupOverlay" parent="@style/ThemeOverlay.AppCompat.Light" />
     <style name="AppTheme.PopupOverlay.Dark" parent="@style/ThemeOverlay.AppCompat.Dark" />

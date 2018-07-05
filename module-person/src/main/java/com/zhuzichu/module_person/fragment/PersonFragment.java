@@ -151,7 +151,7 @@ public class PersonFragment extends BaseFragment implements LocationUtils.OnLoca
         Config.markChanged(getActivity(), "dark_theme");
 //        _mActivity.recreate();
         Intent intent = new Intent(_mActivity, _mActivity.getClass());
-        intent.putExtra(Keys.KEY_SELECT_INDEX, 1);
+        intent.putExtra(Keys.KEY_SELECT_INDEX, 2);
         startActivity(intent);
         _mActivity.finish();
         _mActivity.overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);

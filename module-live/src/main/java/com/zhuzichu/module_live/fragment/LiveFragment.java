@@ -152,10 +152,10 @@ public class LiveFragment extends BaseFragment implements RtmpHandler.RtmpListen
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_live, mMenu.getMenu());
-        Logger.i("" + ATEUtil.getThemeTextColorPrimary(_mActivity));
-        mMenu.getOverflowIcon().setColorFilter(ATEUtil.getThemeTextColorPrimary(_mActivity), PorterDuff.Mode.SRC_IN);
+        mMenu.getOverflowIcon().setColorFilter(ATEUtil.getToolbarTitleColor(_mActivity,toolbar), PorterDuff.Mode.SRC_IN);
         mMenu.setOnMenuItemClickListener((item) -> onOptionsItemSelected(item));
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();

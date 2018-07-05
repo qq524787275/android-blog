@@ -1,6 +1,7 @@
 package com.zhuzichu.module_base.base;
 
 import android.app.Activity;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,11 +13,14 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 
 import com.zhuzichu.module_base.R;
+import com.zhuzichu.module_base.utils.ATEUtil;
 
 import java.util.List;
 
@@ -124,6 +128,7 @@ public abstract class BaseFragment extends Fragment implements ISupportFragment{
         super.onSaveInstanceState(outState);
         mDelegate.onSaveInstanceState(outState);
     }
+
 
     @Override
     public void onResume() {

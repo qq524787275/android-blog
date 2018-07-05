@@ -12,4 +12,7 @@
 
     <dimen name="cardview_margin">24dp</dimen>
     <dimen name="info_text_size">16sp</dimen>
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>

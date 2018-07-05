@@ -3,7 +3,7 @@
 
     <item name="delegate_containe" type="id" />
     <item name="selected_view" type="id" />
-
+    <item name="toolbar" type="id" />
     <!--banner-->
     <item name="bannerContainer" type="id" />
     <item name="bannerViewPager" type="id" />

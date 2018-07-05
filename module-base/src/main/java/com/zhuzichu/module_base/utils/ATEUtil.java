@@ -2,6 +2,7 @@ package com.zhuzichu.module_base.utils;
 
 import android.content.Context;
 import android.preference.PreferenceManager;
+import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 
 import com.afollestad.appthemeengine.Config;
@@ -41,5 +42,7 @@ public class ATEUtil {
         return context.getResources().getColor(textColorSecondly.resourceId);
     }
 
-
+    public static int getToolbarTitleColor(Context context, Toolbar toolbar){
+        return Config.getToolbarTitleColor(context,toolbar ,getATEKey(context));
+    }
 }

@@ -1,14 +1,9 @@
 package com.zhuzichu.module_home.fragment;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import com.afollestad.appthemeengine.prefs.BorderCircleView;
 import com.zhuzichu.module_base.base.BaseFragment;
 import com.zhuzichu.module_home.R;
 
@@ -18,9 +13,9 @@ import com.zhuzichu.module_home.R;
  */
 public class HomeFragment extends BaseFragment {
     public static HomeFragment newInstance() {
-        
+
         Bundle args = new Bundle();
-        
+
         HomeFragment fragment = new HomeFragment();
         fragment.setArguments(args);
         return fragment;

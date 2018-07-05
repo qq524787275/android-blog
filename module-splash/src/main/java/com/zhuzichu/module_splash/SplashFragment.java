@@ -1,9 +1,9 @@
 package com.zhuzichu.module_splash;
 
-import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.view.View;
@@ -11,11 +11,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.bumptech.glide.request.transition.Transition;
 import com.zhuzichu.module_base.App;
 import com.zhuzichu.module_base.Constants;
+import com.zhuzichu.module_base.GlideApp;
 import com.zhuzichu.module_base.RouterConstants;
 import com.zhuzichu.module_base.base.BaseFragment;
 import com.zhuzichu.module_base.widget.OnClickListener;
@@ -64,20 +64,20 @@ public class SplashFragment extends BaseFragment {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Glide.with(App.getContent())
+                GlideApp.with(App.getContent())
                         .load(Constants.TRANSITION_URLS[i])
-                        .asBitmap()
                         .placeholder(R.mipmap.img_transition_default)
                         .error(R.mipmap.img_transition_default)
-                        .into(new SimpleTarget<Bitmap>() {
+                        .into(new SimpleTarget<Drawable>() {
                             @Override
-                            public void onResourceReady(Bitmap resource, GlideAnimation<? super Bitmap> glideAnimation) {
-                                mIvPic.setImageBitmap(resource);
+                            public void onResourceReady(@NonNull Drawable resource, @Nullable Transition<? super Drawable> transition) {
+                                mIvPic.setImageDrawable(resource);
                                 init();
                             }
 
                             @Override
-                            public void onLoadFailed(Exception e, Drawable errorDrawable) {
+                            public void onLoadFailed(@Nullable Drawable errorDrawable) {
+                                super.onLoadFailed(errorDrawable);
                                 startToMainActivity();
                             }
                         });
