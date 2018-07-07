@@ -107,4 +107,6 @@ dependencies {
 
     //日志分析
     implementation 'com.tencent.bugly:crashreport:latest.release'
+
+    api "com.facebook.react:react-native:+" // From node_modules.
 }

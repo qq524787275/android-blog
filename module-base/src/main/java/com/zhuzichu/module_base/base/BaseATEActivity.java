@@ -67,7 +67,7 @@ public abstract class BaseATEActivity extends ATEActivity implements ISupportAct
 
     @Override
     public String getATEKey() {
-       return ATEUtil.getATEKey(this);
+        return ATEUtil.getATEKey(this);
     }
 
     @Override
@@ -110,6 +110,7 @@ public abstract class BaseATEActivity extends ATEActivity implements ISupportAct
     protected void onDestroy() {
         mDelegate.onDestroy();
         super.onDestroy();
+        System.gc();
     }
 
     /**

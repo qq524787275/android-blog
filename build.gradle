@@ -20,6 +20,11 @@ allprojects {
         google()
         jcenter()
         maven { url "https://jitpack.io" }
+        //2，配置   maven 库  指定  node_modules  模块
+        maven {
+            // All of React Native (JS, Android binaries) is installed from npm
+            url "$rootDir/module-react/node_modules/react-native/android"
+        }
     }
 }
 

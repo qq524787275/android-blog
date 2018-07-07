@@ -6,6 +6,11 @@ import android.support.multidex.MultiDex;
 
 import com.afollestad.appthemeengine.ATE;
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.facebook.react.ReactApplication;
+import com.facebook.react.ReactNativeHost;
+import com.facebook.react.ReactPackage;
+import com.facebook.react.shell.MainReactPackage;
+import com.facebook.soloader.SoLoader;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -18,12 +23,15 @@ import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.tencent.bugly.crashreport.CrashReport;
 
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * 作者: Zzc on 2018-04-03.
  * 版本: v1.0
  */
 
-public class App extends Application {
+public class App extends Application implements ReactApplication {
     private static Context content;
 
     static {
@@ -50,6 +58,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        SoLoader.init(this, /* native exopackage */ false);
         content = this;
         if (BuildConfig.DEBUG) {
             ARouter.openDebug();
@@ -65,7 +74,7 @@ public class App extends Application {
         });
         Logger.i("App创建了");
         setupATE();
-       CrashReport.initCrashReport(getApplicationContext(), "04d7ee0826", false);
+        CrashReport.initCrashReport(getApplicationContext(), "04d7ee0826", false);
     }
 
     @Override
@@ -89,4 +98,30 @@ public class App extends Application {
                     .commit();
         }
     }
+
+    //初始化ReactNativeHost----------------------------分割线------------------------------------
+    @Override
+    public ReactNativeHost getReactNativeHost() {
+        return mReactNativeHost;
+    }
+
+    private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+        @Override
+        public boolean getUseDeveloperSupport() {
+            return true;
+        }
+
+        @Override
+        protected List<ReactPackage> getPackages() {
+            return Arrays.<ReactPackage>asList(
+                    new MainReactPackage()
+            );
+        }
+
+        @Override
+        protected String getJSMainModuleName() {
+            return "App";
+        }
+    };
+    //-------------------------------分割线--------------------------------------------------------
 }

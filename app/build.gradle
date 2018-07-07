@@ -1,6 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        release {
+            keyAlias 'blog'
+            keyPassword '000000'
+            storeFile file('C:/Users/Administrator/Desktop/File/blog.jks')
+            storePassword '000000'
+        }
+    }
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.zhuzichu.blog"
@@ -11,6 +19,11 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
 
+        //jni  报错    指定ndk
+        ndk {
+            abiFilters "armeabi-v7a", "x86"
+        }
+
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [ moduleName : project.getName() ]
@@ -19,10 +32,19 @@ android {
 
     }
     buildTypes {
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+
     }
 
     lintOptions{

@@ -66,6 +66,7 @@ public abstract class BaseActivity extends AppCompatActivity implements ISupport
     protected void onDestroy() {
         mDelegate.onDestroy();
         super.onDestroy();
+        System.gc();
     }
 
     /**
