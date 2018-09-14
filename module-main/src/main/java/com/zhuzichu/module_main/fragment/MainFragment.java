@@ -7,6 +7,8 @@ import android.view.View;
 import com.zhuzichu.module_base.Keys;
 import com.zhuzichu.module_base.base.BaseBackFragment;
 import com.zhuzichu.module_base.base.BaseFragment;
+import com.zhuzichu.module_base.widget.animate.Techniques;
+import com.zhuzichu.module_base.widget.animate.YoYo;
 import com.zhuzichu.module_base.widget.bottom.BottomBar;
 import com.zhuzichu.module_base.widget.bottom.BottomBarTab;
 import com.zhuzichu.module_cartoon.fragment.CartoonFragment;
@@ -23,7 +25,7 @@ import butterknife.BindView;
  */
 public class MainFragment extends BaseBackFragment {
     public static final int HOME = 0;
-    public static final int CARTOON=1;
+    public static final int CARTOON = 1;
     public static final int PERSON = 2;
 
     private BaseFragment[] mBaseFragments = new BaseFragment[3];
@@ -54,7 +56,7 @@ public class MainFragment extends BaseBackFragment {
             mBaseFragments[CARTOON] = CartoonFragment.newInstance();
 
             loadMultipleRootFragment(R.id.delegate_containe, HOME, mBaseFragments[HOME]
-                    , mBaseFragments[PERSON],mBaseFragments[CARTOON]);
+                    , mBaseFragments[PERSON], mBaseFragments[CARTOON]);
         } else {
             // 这里库已经做了Fragment恢复,所有不需要额外的处理了, 不会出现重叠问题
             // 这里我们需要拿到mFragments的引用,也可以通过getChildFragmentManager.findFragmentByTag自行进行判断查找(效率更高些),用下面的方法查找更方便些
@@ -70,9 +72,9 @@ public class MainFragment extends BaseBackFragment {
         super.initView(view);
         mBottomBar
                 .addItem(new BottomBarTab(_mActivity, R.mipmap.main_tab_home_normal, "首页"))
-                .addItem(new BottomBarTab(_mActivity,R.mipmap.main_tab_cartoon_normal,"漫画"))
+                .addItem(new BottomBarTab(_mActivity, R.mipmap.main_tab_cartoon_normal, "漫画"))
                 .addItem(new BottomBarTab(_mActivity, R.mipmap.main_tab_person_normal, "我的"));
-        mBottomBar.setCurrentItem(_mActivity.getIntent().getIntExtra(Keys.KEY_SELECT_INDEX,0));
+        mBottomBar.setCurrentItem(_mActivity.getIntent().getIntExtra(Keys.KEY_SELECT_INDEX, 0));
     }
 
     @Override
@@ -80,9 +82,22 @@ public class MainFragment extends BaseBackFragment {
         super.initEvent();
         mBottomBar.setOnTabSelectedListener(new BottomBar.OnTabSelectedListener() {
             @Override
-            public void onTabSelected(int position, int prePosition) {
+            public void onTabSelected(int position, int prePosition, View view) {
 //                showHideAnimaFragment(mBaseFragments[position], mBaseFragments[prePosition], getFragmentManager());
                 showHideFragment(mBaseFragments[position], mBaseFragments[prePosition]);
+                switch (position) {
+                    case 0:
+                        YoYo.with(Techniques.BounceInLeft).duration(500).playOn(view);
+                        break;
+                    case 1:
+                        YoYo.with(Techniques.BounceInDown).duration(500).playOn(view);
+                        break;
+                    case 2:
+                        YoYo.with(Techniques.BounceInRight).duration(500).playOn(view);
+                        break;
+                    default:
+                        break;
+                }
             }
 
             @Override

@@ -72,7 +72,7 @@ public class BottomBar extends LinearLayout {
                 if (mCurrentPosition == pos) {
                     mListener.onTabReselected(pos);
                 } else {
-                    mListener.onTabSelected(pos, mCurrentPosition);
+                    mListener.onTabSelected(pos, mCurrentPosition,tab);
                     tab.setSelected(true);
                     mListener.onTabUnselected(mCurrentPosition);
                     mTabs.get(mCurrentPosition).setSelected(false);
@@ -113,7 +113,7 @@ public class BottomBar extends LinearLayout {
     }
 
     public interface OnTabSelectedListener {
-        void onTabSelected(int position, int prePosition);
+        void onTabSelected(int position, int prePosition,View tab);
 
         void onTabUnselected(int position);
 

@@ -77,6 +77,7 @@ public class CartoonWebFragment extends BaseWebFragment {
     }
 
     private void initToolBar() {
+        mToolbar.setTitle("快漫");
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
@@ -111,13 +112,14 @@ public class CartoonWebFragment extends BaseWebFragment {
         return new WebChromeClient(){
             @Override
             public void onReceivedTitle(WebView view, String title) {
-                getSupportActionBar().setTitle(title);
+                mToolbar.setTitle(title);
             }
         };
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
         inflater.inflate(R.menu.menu_web, mMenu.getMenu());
         mMenu.getOverflowIcon().setColorFilter(ATEUtil.getToolbarTitleColor(_mActivity,mToolbar), PorterDuff.Mode.SRC_IN);
         mMenu.setOnMenuItemClickListener((item) -> onOptionsItemSelected(item));

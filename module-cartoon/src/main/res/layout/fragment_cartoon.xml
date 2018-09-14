@@ -32,7 +32,14 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
-                app:popupTheme="?ttPopupMenuStyle" />
+                app:popupTheme="?ttPopupMenuStyle" >
+                <android.support.v7.widget.ActionMenuView
+                    android:id="@+id/menu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"></android.support.v7.widget.ActionMenuView>
+            </android.support.v7.widget.Toolbar>
+
         </android.support.design.widget.AppBarLayout>
     </io.codetail.widget.RevealFrameLayout>
 

@@ -2,9 +2,9 @@
 <resources>
 
     <attr name="cardStyle" format="reference" />
-    <attr format="reference" name="divider_color" />
-    <attr format="reference" name="bottom_bg_color" />
-    <attr format="reference" name="ttPopupMenuStyle" />
+    <attr name="divider_color" format="reference" />
+    <attr name="bottom_bg_color" format="reference" />
+    <attr name="ttPopupMenuStyle" format="reference" />
     <!--白天模式-->
     <style name="ThemeBaseLight" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="ate_key">light_theme</item>
@@ -51,9 +51,11 @@
     </style>
 
     <style name="AppThemeLight" parent="ThemeBaseLight" />
+
     <style name="AppThemeDark" parent="ThemeBaseDark" />
 
     <style name="AppTheme.PopupOverlay" parent="@style/ThemeOverlay.AppCompat.Light" />
+
     <style name="AppTheme.PopupOverlay.Dark" parent="@style/ThemeOverlay.AppCompat.Dark" />
 
 
@@ -131,4 +133,8 @@
         <item name="android:activityOpenExitAnimation">@anim/activity_up_out</item>
     </style>
 
+
+    <style name="SplashScreenTheme" parent="SplashScreen_SplashTheme">
+        <item name="colorPrimaryDark">?attr/colorPrimary</item>
+    </style>
 </resources>

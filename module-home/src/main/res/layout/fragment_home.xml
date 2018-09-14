@@ -1,12 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <Button
-        android:id="@+id/click"
+        android:id="@+id/click3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:text="跳转到React界面" />
-</RelativeLayout>
+        android:text="React-Native开发的界面" />
+
+    <com.zhuzichu.module_base.widget.likeview.RxShineButton xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/po_image0"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:btn_color="@android:color/holo_blue_dark"
+        app:btn_fill_color="@android:color/holo_red_light"
+        app:siShape="@raw/heart" />
+
+
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="设置ShortcutBadger" />
+</LinearLayout>

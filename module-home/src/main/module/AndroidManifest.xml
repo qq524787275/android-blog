@@ -5,17 +5,20 @@
     <application
         android:allowBackup="true"
         android:label="@string/app_name"
-        android:supportsRtl="true">
+        android:supportsRtl="true"
+        android:theme="@style/AppThemeLight">
         <meta-data
             android:name="design_width"
-            android:value="768"></meta-data>
+            android:value="768" />
         <meta-data
             android:name="design_height"
-            android:value="1280"></meta-data>
+            android:value="1280" />
 
-        <activity android:name=".MyReactActivity">
-        </activity>
         <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+        <activity
+            android:name="com.zhuzichu.module_base.react.preloadreact.PreLoadReactActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:windowSoftInputMode="adjustResize"></activity>
     </application>
 
 </manifest>

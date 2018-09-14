@@ -144,13 +144,14 @@ public class LiveFragment extends BaseFragment implements RtmpHandler.RtmpListen
 
 
     private void initToolBar() {
+        toolbar.setTitle("直播");
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("直播");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        menu.clear();
         inflater.inflate(R.menu.menu_live, mMenu.getMenu());
         mMenu.getOverflowIcon().setColorFilter(ATEUtil.getToolbarTitleColor(_mActivity,toolbar), PorterDuff.Mode.SRC_IN);
         mMenu.setOnMenuItemClickListener((item) -> onOptionsItemSelected(item));

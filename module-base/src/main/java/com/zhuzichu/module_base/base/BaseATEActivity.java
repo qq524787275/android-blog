@@ -125,7 +125,7 @@ public abstract class BaseATEActivity extends ATEActivity implements ISupportAct
      * 不建议复写该方法,请使用 {@link #onBackPressedSupport} 代替
      */
     @Override
-    final public void onBackPressed() {
+    public void onBackPressed() {
         mDelegate.onBackPressed();
     }
 
@@ -204,6 +204,7 @@ public abstract class BaseATEActivity extends ATEActivity implements ISupportAct
     public void popTo(Class<?> targetFragmentClass, boolean includeTargetFragment) {
         mDelegate.popTo(targetFragmentClass, includeTargetFragment);
     }
+
 
     /**
      * If you want to begin another FragmentTransaction immediately after popTo(), use this method.

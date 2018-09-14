@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/module-live" />
             <option value="$PROJECT_DIR$/module-main" />
             <option value="$PROJECT_DIR$/module-person" />
+            <option value="$PROJECT_DIR$/module-react/node_modules/react-native-splash-screen/android" />
             <option value="$PROJECT_DIR$/module-service" />
             <option value="$PROJECT_DIR$/module-splash" />
           </set>

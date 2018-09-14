@@ -26,14 +26,20 @@ android {
 
         javaCompileOptions {
             annotationProcessorOptions {
-                arguments = [ moduleName : project.getName() ]
+                arguments = [moduleName: project.getName()]
             }
         }
 
+        //只加载中文
+        resConfigs "zh"
     }
     buildTypes {
 
         release {
+//            移除没有用到的资源
+//            minifyEnabled true
+//            zipAlignEnabled true
+//            shrinkResources true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.release
@@ -47,7 +53,7 @@ android {
 
     }
 
-    lintOptions{
+    lintOptions {
         checkReleaseBuilds false
         abortOnError false
     }
@@ -55,12 +61,13 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.android.support.constraint:constraint-layout:1.1.2'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     implementation project(':module-base')
-    if(!isDebugMainModule.toBoolean()){
+    if (!isDebugMainModule.toBoolean()) {
         implementation project(':module-main')
     }
 

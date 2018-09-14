@@ -21,6 +21,7 @@ import com.zhuzichu.module_base.callback.BaseResponse;
 import com.zhuzichu.module_base.callback.JsonCallback;
 import com.zhuzichu.module_base.utils.ATEUtil;
 import com.zhuzichu.module_base.utils.DensityUtils;
+import com.zhuzichu.module_base.widget.loading.LatteLoader;
 import com.zhuzichu.module_base.widget.recyclerview.FastScrollRecyclerView;
 import com.zhuzichu.module_base.widget.sidemenu.interfaces.ScreenShotable;
 import com.zhuzichu.module_cartoon.Constants;
@@ -94,6 +95,7 @@ public class ContentFragment extends BaseFragment implements ScreenShotable {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        OkGo.getInstance().cancelTag(this);
         if (mSubscription != null && mSubscription.isUnsubscribed()) {
             mSubscription.unsubscribe();
             mSubscription = null;
@@ -143,7 +145,9 @@ public class ContentFragment extends BaseFragment implements ScreenShotable {
     }
 
     public void loadTags() {
+        LatteLoader.show(_mActivity);
         OkGo.<BaseResponse<TagsBean>>get(Constants.URL_TAGS + mTag)
+                .tag(this)
                 .params("count", mCount)
                 .params("page", mPage)
                 .execute(new JsonCallback<BaseResponse<TagsBean>>() {
@@ -172,8 +176,11 @@ public class ContentFragment extends BaseFragment implements ScreenShotable {
                         super.onFinish();
                         mRefresh.finishLoadMore();
                         mRefresh.finishRefresh();
+                        LatteLoader.hide();
                     }
                 });
 
     }
+
+
 }

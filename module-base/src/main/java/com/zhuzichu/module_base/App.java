@@ -1,16 +1,20 @@
 package com.zhuzichu.module_base;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
+import android.os.Build;
 import android.support.multidex.MultiDex;
 
 import com.afollestad.appthemeengine.ATE;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.facebook.react.ReactApplication;
+import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
+import com.lzy.okgo.OkGo;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -22,9 +26,13 @@ import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 import com.tencent.bugly.crashreport.CrashReport;
+import com.zhuzichu.module_base.react.AnReactPackage;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
+
+import javax.annotation.Nullable;
 
 /**
  * 作者: Zzc on 2018-04-03.
@@ -33,6 +41,7 @@ import java.util.List;
 
 public class App extends Application implements ReactApplication {
     private static Context content;
+    private static App mInstance;
 
     static {
         SmartRefreshLayout.setDefaultRefreshHeaderCreator(new DefaultRefreshHeaderCreator() {
@@ -55,11 +64,16 @@ public class App extends Application implements ReactApplication {
         return content;
     }
 
+    public static App getInstance() {
+        return mInstance;
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
         SoLoader.init(this, /* native exopackage */ false);
-        content = this;
+        content = getApplicationContext();
+        mInstance = this;
         if (BuildConfig.DEBUG) {
             ARouter.openDebug();
             ARouter.openLog();
@@ -72,9 +86,11 @@ public class App extends Application implements ReactApplication {
                 return true;
             }
         });
-        Logger.i("App创建了");
+        Logger.i("App创建了:"+ Build.MANUFACTURER);
         setupATE();
         CrashReport.initCrashReport(getApplicationContext(), "04d7ee0826", false);
+
+        OkGo.getInstance().init(this);
     }
 
     @Override
@@ -83,11 +99,15 @@ public class App extends Application implements ReactApplication {
         MultiDex.install(base);
     }
 
+    @SuppressLint("ResourceType")
     private void setupATE() {
         if (!ATE.config(this, "light_theme").isConfigured(4)) {
             ATE.config(this, "light_theme")
                     .activityTheme(R.style.AppThemeLight)
                     .coloredNavigationBar(false)
+                    .primaryColorRes(R.color.colorPrimaryLightTheme)
+                    .primaryColorDarkRes(R.color.colorPrimaryDarkLightTheme)
+                    .accentColorRes(R.color.colorAccentLightTheme)
                     .commit();
         }
 
@@ -95,9 +115,13 @@ public class App extends Application implements ReactApplication {
             ATE.config(this, "dark_theme")
                     .activityTheme(R.style.AppThemeDark)
                     .coloredNavigationBar(false)
+                    .primaryColorRes(R.color.colorPrimaryDarkTheme)
+                    .primaryColorDarkRes(R.color.colorPrimaryDarkDarkTheme)
+                    .accentColorRes(R.color.colorAccentDarkTheme)
                     .commit();
         }
     }
+
 
     //初始化ReactNativeHost----------------------------分割线------------------------------------
     @Override
@@ -105,18 +129,36 @@ public class App extends Application implements ReactApplication {
         return mReactNativeHost;
     }
 
+    public ReactInstanceManager getReactInstanceManager() {
+        return getReactNativeHost().getReactInstanceManager();
+    }
+
     private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
         @Override
         public boolean getUseDeveloperSupport() {
-            return true;
+            return false;
         }
 
         @Override
         protected List<ReactPackage> getPackages() {
-            return Arrays.<ReactPackage>asList(
-                    new MainReactPackage()
+            return Arrays.asList(
+                    new MainReactPackage(),
+                    new AnReactPackage()
             );
         }
+
+        @Nullable
+        @Override
+        protected String getJSBundleFile() {
+            String path = getContent().getExternalFilesDir(null).getAbsolutePath() + File.separator + "index.android.bundle";
+            File file = new File(path);
+            if (file != null && file.exists()) {
+                return path;
+            } else {
+                return super.getJSBundleFile();
+            }
+        }
+
 
         @Override
         protected String getJSMainModuleName() {

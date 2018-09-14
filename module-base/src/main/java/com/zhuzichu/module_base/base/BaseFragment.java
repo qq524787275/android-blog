@@ -76,8 +76,8 @@ public abstract class BaseFragment extends Fragment implements ISupportFragment{
     }
 
     public void setSupportActionBar(Toolbar toolbar){
-        ((AppCompatActivity)_mActivity).setSupportActionBar(toolbar);
         setHasOptionsMenu(true);
+        ((AppCompatActivity)_mActivity).setSupportActionBar(toolbar);
     }
 
     public ActionBar getSupportActionBar(){

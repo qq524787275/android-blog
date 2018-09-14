@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.ActionMenuView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -58,11 +59,14 @@ public class CartoonFragment extends BaseFragment {
     LinearLayout mContentFrame;
     @BindView(R2.id.container_frame)
     RevealFrameLayout mContainer;
+    @BindView(R2.id.menu)
+    ActionMenuView mMenu;
     private ViewAnimator viewAnimator;
     private ActionBarDrawerToggle mDrawerToggle;
     private ContentFragment mContentFragment;
     private List<TagType> list = new ArrayList<>();
     private CompositeSubscription mSubscription;
+    private Subscription subscribe;
 
     public static CartoonFragment newInstance() {
 
@@ -81,7 +85,7 @@ public class CartoonFragment extends BaseFragment {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
         mSubscription = new CompositeSubscription();
-        Observable.from(TagType.values()).toList().subscribe(tagTypes -> list = tagTypes);
+        subscribe = Observable.from(TagType.values()).toList().subscribe(tagTypes -> list = tagTypes);
     }
 
     @Override
@@ -94,7 +98,7 @@ public class CartoonFragment extends BaseFragment {
         viewAnimator = new ViewAnimator<>(_mActivity, list, mContentFragment, mDrawerLayout, new ViewAnimator.ViewAnimatorListener() {
             @Override
             public ScreenShotable onSwitch(Resourceble slideMenuItem, ScreenShotable screenShotable, int position) {
-                getSupportActionBar().setTitle("漫画-" + slideMenuItem.getName());
+                toolbar.setTitle("漫画-" + slideMenuItem.getName());
                 return replaceFragment(screenShotable, position, slideMenuItem.getImageRes());
             }
 
@@ -114,7 +118,6 @@ public class CartoonFragment extends BaseFragment {
                 mLeftMenu.addView(view);
             }
         }, toolbar);
-
     }
 
     @Override
@@ -139,7 +142,10 @@ public class CartoonFragment extends BaseFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_cartoon, menu);
+        mMenu.getMenu().clear();
+        inflater.inflate(R.menu.menu_cartoon, mMenu.getMenu());
+        mMenu.getOverflowIcon().setColorFilter(ATEUtil.getToolbarTitleColor(_mActivity,toolbar), PorterDuff.Mode.SRC_IN);
+        mMenu.setOnMenuItemClickListener((item) -> onOptionsItemSelected(item));
     }
 
 
@@ -177,6 +183,10 @@ public class CartoonFragment extends BaseFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (subscribe != null && subscribe.isUnsubscribed()) {
+            subscribe.unsubscribe();
+            subscribe = null;
+        }
         if (mSubscription != null && mSubscription.isUnsubscribed()) {
             mSubscription.unsubscribe();
             mSubscription = null;
@@ -190,8 +200,8 @@ public class CartoonFragment extends BaseFragment {
     }
 
     private void initToolBar() {
+        toolbar.setTitle("漫画-全部");
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("漫画-全部");
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mDrawerToggle = new ActionBarDrawerToggle(
@@ -227,6 +237,7 @@ public class CartoonFragment extends BaseFragment {
         mDrawerToggle.syncState();
 
         mDrawerToggle.getDrawerArrowDrawable().setColorFilter(ATEUtil.getToolbarTitleColor(_mActivity, toolbar), PorterDuff.Mode.SRC_IN);
+
     }
 
 }
